@@ -1,0 +1,5 @@
+target/*
+web-crawler.iml
+web-crawler.ipr
+web-crawler.iws
+.DS_Store
