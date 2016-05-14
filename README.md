@@ -2,7 +2,9 @@ Web Crawler
 ===========
 
 ##Introduction
-The application that I have created is using Spring MVC stack running on Tomcat.
+The application that I have created is using Spring MVC running on Tomcat.
+
+A webpage is presented that allows to user to enter a fully qualified domain that they would like crawled.
 
 I have to caveat that the application is not complete, there are some teething troubles which will be cleared up via writing more unit tests.
 
@@ -33,13 +35,16 @@ They can also be run from within the IDE.
 
 A lot more tests need to be written.
 
-Also, need to add validation so that only domains are allowed to be entered.
-
+Also, need to add validation so that only pure domains are allowed to be entered.
+eg. http://www.kinitic.com shpuld be accepted; but http://www.kinitic.com/info should NOT
 
 ### Assumptions
 
 - Tomcat is installed
 - Maven is installed
+
+- An internal link within the domain will only ever be crawled once, regardless of how many times it appears on different pages.
+
 
 
 
