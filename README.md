@@ -36,5 +36,10 @@ A lot more tests need to be written.
 Also, need to add validation so that only domains are allowed to be entered.
 
 
+### Assumptions
+
+- Tomcat is installed
+- Maven is installed
+
 
 
