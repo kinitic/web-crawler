@@ -2,13 +2,19 @@ Web Crawler
 ===========
 
 ##Introduction
-The application that I have created is using Spring MVC running on Tomcat.
+The Web crawler used Spring MVC running on Tomcat.
 
 A webpage is presented that allows to user to enter a fully qualified domain that they would like crawled.
 
-I have to caveat that the application is not complete, there are some teething troubles which will be cleared up via writing more unit tests.
-
 ###Running the app
+
+
+#### Remotely
+I have deployed a working version of the application to heroku.
+To hit the web application, use the following url:
+`https://intense-peak-58864.herokuapp.com/company/`
+
+- Then enter the domain to be tested. This may take a few minutes.
 
 #### Locally
 The web application can be run locally. I generally use IntelliJ for my deploy and tomcat runners but you can also create the war locally using maven.
@@ -21,7 +27,7 @@ The web application can be run locally. I generally use IntelliJ for my deploy a
 - Once tomcat starts up, hit the url:
   `http://localhost:8080/crawler`
 
-- Then enter the domain to be tested.
+- Then enter the domain to be tested. This may take a few minutes.
 
 
 ### Testing
@@ -32,8 +38,6 @@ The location of the unit tests are in the expected `test/java` folder.
 These will also have been run from the `mvn package command`.
 
 They can also be run from within the IDE.
-
-A lot more tests need to be written.
 
 Also, need to add validation so that only pure domains are allowed to be entered.
 eg. http://www.kinitic.com shpuld be accepted; but http://www.kinitic.com/info should NOT

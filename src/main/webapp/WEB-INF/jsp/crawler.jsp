@@ -4,7 +4,7 @@
     <title>kinITic Web crawler</title>
 </head>
 <body>
-        <form action="sitemap" method="POST" >
+        <form action="sitemap" method="POST" onsubmit="document.getElementById('loading').style.display='block'">
             <table width="50%">
                 <tr>
                     <td width="48%">Enter Domain to crawl: </td>
@@ -14,8 +14,9 @@
                 </tr>
             </table>
             <p>
-                <input id="submit" type="submit" name="Submit" value="Submit name" />
+                <input id="submit" type="submit" name="Submit" value="Start crawling..." />
             </p>
+            <img id="loading" src="resources/loading.gif" style="display: none; position: fixed; top: 20%; left: 50%" />
         </form>
 </body>
 </html>

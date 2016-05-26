@@ -1,6 +1,5 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans
@@ -24,10 +23,10 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <bean class="com.kinitic.crawler.SitemappingService" id="sitemappingService">
+    <bean id="sitemappingService" class="com.kinitic.crawler.SitemappingService" >
         <constructor-arg ref="httpClient"/>
     </bean>
 
-    <bean class="com.kinitic.crawler.HttpClient" id="httpClient"/>
+    <bean id="httpClient" class="com.kinitic.crawler.HttpClient"/>
 
 </beans>

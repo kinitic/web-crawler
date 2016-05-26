@@ -2,38 +2,34 @@ package com.kinitic.crawler.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class SitemapFragment {
-    @JsonProperty("url")
-    String url;
     @JsonProperty("internal")
-    List<InternalLink> internalLinks;
+    Set<String> internalLinks;
     @JsonProperty("external")
-    List<ExternalLink> externalLinks;
+    Set<String> externalLinks;
     @JsonProperty("resource")
-    List<Resource> resources;
+    Set<String> resources;
 
-    private SitemapFragment(String url, List<InternalLink> internalLinks, List<ExternalLink> externalLinks, List<Resource> resources) {
-        this.url = url;
+    private SitemapFragment(Set<String> internalLinks, Set<String> externalLinks, Set<String> resources) {
         this.internalLinks = internalLinks;
         this.externalLinks = externalLinks;
         this.resources = resources;
     }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public List<InternalLink> getInternalLinks() {
+    public Set<String> getInternalLinks() {
         return internalLinks;
     }
 
-    public List<ExternalLink> getExternalLinks() {
+    public Set<String> getExternalLinks() {
         return externalLinks;
     }
 
-    public List<Resource> getResources() {
+    public Set<String> getResources() {
         return resources;
     }
 
@@ -44,7 +40,6 @@ public class SitemapFragment {
 
         SitemapFragment fragment = (SitemapFragment) o;
 
-        if (url != null ? !url.equals(fragment.url) : fragment.url != null) return false;
         if (internalLinks != null ? !internalLinks.equals(fragment.internalLinks) : fragment.internalLinks != null)
             return false;
         if (externalLinks != null ? !externalLinks.equals(fragment.externalLinks) : fragment.externalLinks != null)
@@ -55,8 +50,7 @@ public class SitemapFragment {
 
     @Override
     public int hashCode() {
-        int result = url != null ? url.hashCode() : 0;
-        result = 31 * result + (internalLinks != null ? internalLinks.hashCode() : 0);
+        int result = internalLinks != null ? internalLinks.hashCode() : 0;
         result = 31 * result + (externalLinks != null ? externalLinks.hashCode() : 0);
         result = 31 * result + (resources != null ? resources.hashCode() : 0);
         return result;
@@ -65,7 +59,6 @@ public class SitemapFragment {
     @Override
     public String toString() {
         return "SitemapFragment{" +
-                "url='" + url + '\'' +
                 ", internalLinks=" + internalLinks +
                 ", externalLinks=" + externalLinks +
                 ", resources=" + resources +
@@ -73,38 +66,31 @@ public class SitemapFragment {
     }
 
     public static class SitemapFragmentBuilder {
-        private String url;
-        private List<InternalLink> internalLinks;
-        private List<ExternalLink> externalLinks;
-        private List<Resource> resources;
+        private Set<String> internalLinks = new HashSet<>();
+        private Set<String> externalLinks = new HashSet<>();
+        private Set<String> resources = new HashSet<>();
 
         public static SitemapFragmentBuilder aSitemapFragmentBuilder() {
             return new SitemapFragmentBuilder();
         }
 
-        public SitemapFragmentBuilder withUrl(String url) {
-            this.url = url;
-            return this;
-        }
-
-        public SitemapFragmentBuilder withInternalLinks(List<InternalLink> internalLinks) {
+        public SitemapFragmentBuilder withInternalLinks(Set<String> internalLinks) {
             this.internalLinks = internalLinks;
             return this;
         }
 
-        public SitemapFragmentBuilder withExternalLinks(List<ExternalLink> externalLinks) {
+        public SitemapFragmentBuilder withExternalLinks(Set<String> externalLinks) {
             this.externalLinks = externalLinks;
             return this;
         }
 
-        public SitemapFragmentBuilder withResources(List<Resource> resources) {
+        public SitemapFragmentBuilder withResources(Set<String> resources) {
             this.resources = resources;
             return this;
         }
 
         public SitemapFragment build() {
-            return new SitemapFragment(url, internalLinks, externalLinks, resources);
+            return new SitemapFragment(internalLinks, externalLinks, resources);
         }
     }
-
 }
