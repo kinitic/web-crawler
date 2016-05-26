@@ -20,6 +20,7 @@ public class SitemappingService {
 
     private HttpClient httpClient;
 
+    // TODO: consider using immutable sets...
     private Set<String> internalLinks = new HashSet<>();
     private Set<String> externalLinks = new HashSet<>();
     private Set<String> images = new HashSet<>();
@@ -28,7 +29,6 @@ public class SitemappingService {
     public SitemappingService(HttpClient httpClient) {
         this.httpClient = httpClient;
     }
-
 
     public Sitemap buildSitemap(String domain) throws Exception {
         if (!isValid(domain)) throw new InvalidDomainException("Domain entered needs to end with .com or .co.uk<br/>Trailing slash is optional.");

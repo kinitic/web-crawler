@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
-import java.util.Collections;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -263,6 +262,5 @@ public class SitemappingServiceTest {
         assertThat(sitemap.getSitemapFragment().getInternalLinks(), is(Stream.of(TEST_DOMAIN + "somewhere/", TEST_DOMAIN + "i-am-bad/", TEST_DOMAIN + "i-am-good/").collect(toSet())));
         assertThat(sitemap.getSitemapFragment().getResources().size(), is(1));
         assertThat(sitemap.getSitemapFragment().getResources(), is(singleton("http://whatever.com/WD_logo_150X27.png")));
-
     }
 }
