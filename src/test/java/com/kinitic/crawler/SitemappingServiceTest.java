@@ -24,12 +24,12 @@ public class SitemappingServiceTest {
     }
 
     @Test(expected = InvalidDomainException.class)
-    public void shouldAllowTopLevelDomainUrls_ThatEndInDotCom() throws Exception {
-        sitemappingService.buildSitemap("http://www.kinitic.aaa");
+    public void shouldNotAllowDomainUrls_ThatDontEndInDotCom_OrDotCoUk() throws Exception {
+        sitemappingService.buildSitemap("http://www.kinitic.it");
     }
 
     @Test(expected = InvalidDomainException.class)
-    public void shouldAllowTopLevelDomainUrls_ThatEndInDotCom_AndNotAnySubPages() throws Exception {
+    public void shouldNotAllowDomainUrls_ThatAreSubPages() throws Exception {
         sitemappingService.buildSitemap("http://www.kinitic.com/this-is-bad");
     }
 
