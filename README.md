@@ -2,9 +2,9 @@ Web Crawler
 ===========
 
 ##Introduction
-The Web crawler used Spring MVC running on Tomcat.
+The Web crawler uses Spring MVC running on Tomcat.
 
-A webpage is presented that allows to user to enter a fully qualified domain that they would like crawled.
+A web page allows the user to enter a fully qualified domain that they would like crawled.
 
 ###Running the app
 
@@ -12,7 +12,7 @@ A webpage is presented that allows to user to enter a fully qualified domain tha
 #### Remotely
 I have deployed a working version of the application to heroku.
 To hit the web application, use the following url:
-`https://intense-peak-58864.herokuapp.com/company/`
+`https://blooming-cove-55786.herokuapp.com/crawler`
 
 - Then enter the domain to be tested. This may take a few minutes.
 
@@ -39,14 +39,12 @@ These will also have been run from the `mvn package command`.
 
 They can also be run from within the IDE.
 
-Also, need to add validation so that only pure domains are allowed to be entered.
-eg. http://www.kinitic.com shpuld be accepted; but http://www.kinitic.com/info should NOT
 
 ### Assumptions
 
 - Tomcat is installed
 - Maven is installed
-
+- Only domains that end in .com or .co.uk are allowed. (A trailing slash is optional)
 - An internal link within the domain will only ever be crawled once, regardless of how many times it appears on different pages.
 
 
