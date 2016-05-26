@@ -9,13 +9,6 @@ A web page allows the user to enter a fully qualified domain that they would lik
 ###Running the app
 
 
-#### Remotely
-I have deployed a working version of the application to heroku.
-To hit the web application, use the following url:
-`https://blooming-cove-55786.herokuapp.com/crawler`
-
-- Then enter the domain to be tested. This may take a few minutes.
-
 #### Locally
 The web application can be run locally. I generally use IntelliJ for my deploy and tomcat runners but you can also create the war locally using maven.
 
