@@ -5,8 +5,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
+import java.util.Collections;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import static java.util.Collections.emptySet;
 import static java.util.Collections.singleton;
+import static java.util.stream.Collectors.toSet;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.*;
@@ -179,7 +184,9 @@ public class SitemappingServiceTest {
 
         assertThat(sitemap.getSitemapFragment().getInternalLinks().size(), is(1));
         assertThat(sitemap.getSitemapFragment().getExternalLinks().size(), is(2));
+        assertThat(sitemap.getSitemapFragment().getExternalLinks(), is(Stream.of("http://www.google.com/", "http://www.bbc.co.uk/").collect(Collectors.toSet())));
         assertThat(sitemap.getSitemapFragment().getResources().size(), is(2));
+        assertThat(sitemap.getSitemapFragment().getResources(), is(Stream.of("http://whatever.com/WD_logo_150X27.png", "http://a-different-one-from-above/WD_logo_150X27.png").collect(Collectors.toSet())));
     }
 
     @Test
@@ -223,6 +230,7 @@ public class SitemappingServiceTest {
         verify(mockHttpClient, times(1)).getPageContent(TEST_DOMAIN + "somewhere-new/");
 
         assertThat(sitemap.getSitemapFragment().getInternalLinks().size(), is(4));
+        assertThat(sitemap.getSitemapFragment().getInternalLinks(), is(Stream.of(TEST_DOMAIN + "somewhere/", TEST_DOMAIN + "somewhere-else/", TEST_DOMAIN + "somewhere-else-again/", TEST_DOMAIN + "somewhere-new/").collect(toSet())));
     }
 
     @Test
@@ -252,6 +260,9 @@ public class SitemappingServiceTest {
         final Sitemap sitemap = sitemappingService.buildSitemap(TEST_DOMAIN);
 
         assertThat(sitemap.getSitemapFragment().getInternalLinks().size(), is(3));
+        assertThat(sitemap.getSitemapFragment().getInternalLinks(), is(Stream.of(TEST_DOMAIN + "somewhere/", TEST_DOMAIN + "i-am-bad/", TEST_DOMAIN + "i-am-good/").collect(toSet())));
         assertThat(sitemap.getSitemapFragment().getResources().size(), is(1));
+        assertThat(sitemap.getSitemapFragment().getResources(), is(singleton("http://whatever.com/WD_logo_150X27.png")));
+
     }
 }
